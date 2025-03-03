@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food - ישראל טירנואר | אוכל ביתי • אירועים • על האש</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Amatic+SC:wght@700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: #1e2222;
+            color: #f5f5f5;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            color: white;
+            text-align: center;
+            position: relative;
+            height: 90vh;
+            min-height: 400px;
+            max-height: 600px;
+        }
+        
+        .header-image {
+            width: 100%;
+            height: 90vh;
+            min-height: 400px;
+            max-height: 600px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/api/placeholder/1200/600');
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        
+        .logo {
+            font-family: 'Amatic SC', cursive;
+            font-size: 6rem;
+            margin-bottom: 10px;
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+            animation: fadeInDown 1s ease;
+        }
+        
+        .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+        }
+        
+        .kosher-badge {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 1rem;
+            margin-top: 20px;
+            animation: fadeIn 2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* פלפל אדום סמל */
+        .pepper-icon {
+            width: 80px;
+            margin: 15px auto;
+            animation: fadeIn 2.5s ease;
+        }
+        
+        section {
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        section::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 50px;
+            top: -25px;
+            left: 0;
+            background-color: inherit;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+            z-index: 2;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 3rem;
+            font-family: 'Amatic SC', cursive;
+            color: #f5f5f5;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            right: 25%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #e74c3c, transparent);
+        }
+        
+        .about {
+            background-color: #2c3333;
+            text-align: center;
+            padding-top: 60px;
+        }
+        
+        .about p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .about.visible p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .about p:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+        
+        .about p:nth-child(3) {
+            transition-delay: 0.4s;
+        }
+        
+        .section-divider {
+            height: 80px;
+            background: linear-gradient(to bottom right, #2c3333 50%, #1e2222 50%);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .menu-section {
+            background-color: #1e2222;
+            padding: 60px 0;
+        }
+        
+        .menu-container {
+            background-color: #2c3333;
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            max-width: 1000px;
+            margin: 0 auto;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: transform 1s ease, opacity 1s ease;
+        }
+        
+        .menu-section.visible .menu-container {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .menu-column h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            position: relative;
+            font-family: 'Amatic SC', cursive;
+            font-weight: bold;
+            font-size: 2.2rem;
+        }
+        
+        .menu-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #e74c3c, transparent);
+        }
+        
+        .menu-item {
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+            padding: 5px 0;
+        }
+        
+        .menu-item:hover {
+            transform: translateX(5px);
+            color: #e74c3c;
+        }
+        
+        .menu-packages {
+            margin-top: 60px;
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .menu-packages h3 {
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            font-family: 'Amatic SC', cursive;
+        }
+        
+        .packages-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .package {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.1));
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            width: 300px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .package:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+        
+        .package-price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #e74c3c;
+        }
+        
+        .events {
+            background-color: #2c3333;
+            text-align: center;
+            padding-top: 60px;
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .event-type {
+            background: linear-gradient(145deg, #2c3333, #1e2222);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: transform 0.6s ease, opacity 0.6s ease, box-shadow 0.4s ease;
+        }
+        
+        .events.visible .event-type {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .events.visible .event-type:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+        
+        .events.visible .event-type:nth-child(2) {
+            transition-delay: 0.3s;
+        }
+        
+        .events.visible .event-type:nth-child(3) {
+            transition-delay: 0.5s;
+        }
+        
+        .events.visible .event-type:nth-child(4) {
+            transition-delay: 0.7s;
+        }
+        
+        .event-type:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        
+        .event-type h3 {
+            margin-bottom: 20px;
+            color: #e74c3c;
+            font-size: 1.8rem;
+            font-family: 'Amatic SC', cursive;
+            font-weight: bold;
+            font-size: 2.2rem;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, #2c3333, #1e2222);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(ellipse at center, rgba(231,76,60,0.1) 0%, rgba(231,76,60,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        .cta h2 {
+            color: white;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta p {
+            position: relative;
+            z-index: 2;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 20px rgba(231,76,60,0.3);
+        }
+        
+        .cta-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(231,76,60,0.4);
+        }
+        
+        .contact {
+            background-color: #1e2222;
+            padding-top: 60px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .contact-card {
+            background: linear-gradient(145deg, #2c3333, #1e2222);
+            padding: 40px 30px;
+            border-radius: 15px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: transform 0.6s ease, opacity 0.6s ease, box-shadow 0.3s ease;
+        }
+        
+        .contact.visible .contact-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .contact.visible .contact-card:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+        
+        .contact.visible .contact-card:nth-child(2) {
+            transition-delay: 0.3s;
+        }
+        
+        .contact.visible .contact-card:nth-child(3) {
+            transition-delay: 0.5s;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 20px;
+            color: #e74c3c;
+            font-size: 1.8rem;
+            font-family: 'Amatic SC', cursive;
+        }
+        
+        .contact-card p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .contact-link {
+            color: #f5f5f5;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 50px;
+            background-color: rgba(231,76,60,0.1);
+            border: 1px solid rgba(231,76,60,0.3);
+            margin-top: 5px;
+        }
+        
+        .contact-link:hover {
+            color: #e74c3c;
+            background-color: rgba(231,76,60,0.2);
+        }
+        
+        footer {
+            background-color: #1e2222;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 50px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* ScrollTrigger classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* JavaScript for animations */
+        .js-added {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            font-size: 10px;
+            z-index: 100;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 4rem;
+            }
+            
+            .tagline {
+                font-size: 1.4rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .packages-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-image">
+            <div class="overlay">
+                <h1 class="logo">Food</h1>
+                <p class="tagline">אוכל ביתי • אירועים • על האש</p>
+                <p class="kosher-badge">הכל בכשרות בד"ץ ירושלים והרב לנדא</p>
+                <div class="pepper-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#e74c3c">
+                        <path d="M50,15c0,0-20,10-25,30S20,95,50,85s30-30,25-40S50,15,50,15z"/>
+                        <path d="M50,15c0,0,20,10,25,30S80,95,50,85s-30-30-25-40S50,15,50,15z"/>
+                        <path d="M50,5c0,0-5,5-5,10s5,5,5,5s5,0,5-5S50,5,50,5z" fill="#2ecc71"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section class="about" id="about">
+        <div class="container">
+            <h2>שלום לכם</h2>
+            <p>אני ישראל טירנואר ואני כאן כדי להפיק לכם אירוע מושלם, מאלף ועד תו!! מתמחה בהפקת אירועים, קייטרינג, על האש ואוכל מוכן ביתי לכל סוגי האירועים: ערבי משפחה, שבע ברכות, בריתות, בר מצוות, ועוד.</p>
+            <p>אוכל טרי, איכותי ושירות מכל הלב – שיהפוך את האירוע שלכם לחוויה בלתי נשכחת.</p>
+            <p>מוצרים בכשרות בד"ץ ירושלים והרב לנדא, בשרים בכשרת שחיטת ליובאוויטש!</p>
+        </div>
+    </section>
+    
+    <div class="section-divider"></div>
+    
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <h2>התפריט שלנו</h2>
+            <div class="menu-container">
+                <div class="menu-grid">
+                    <div class="menu-column">
+                        <h3>סלטים</h3>
+                        <div class="menu-item">1. ביצים</div>
+                        <div class="menu-item">2. חומוס</div>
+                        <div class="menu-item">3. חומוס נטחנה</div>
+                        <div class="menu-item">4. טחינה</div>
+                        <div class="menu-item">5. חומוס+טחינה</div>
+                        <div class="menu-item">6. מטבוחה</div>
+                        <div class="menu-item">7. חציל בטחינה</div>
+                        <div class="menu-item">8. חציל במיונז</div>
+                        <div class="menu-item">9. חצילים בתנור</div>
+                        <div class="menu-item">10. חציל ברוטב עגבניות</div>
+                        <div class="menu-item">11. קרפצ'יי חציל</div>
+                        <div class="menu-item">12. סלק</div>
+                        <div class="menu-item">13. קרפצ'יץ</div>
+                        <div class="menu-item">14. תירס</div>
+                        <div class="menu-item">15. עגבניות חריף</div>
+                        <div class="menu-item">16. סחוג</div>
+                        <div class="menu-item">17. גזר מרוקאי</div>
+                        <div class="menu-item">18. גזר מפוררים</div>
+                        <div class="menu-item">19. כרוב גזר</div>
+                        <div class="menu-item">20. חמוצים</div>
+                        <div class="menu-item">21. כרוב בסחנה</div>
+                        <div class="menu-item">22. כרוב ממונים ואגוזים</div>
+                        <div class="menu-item">23. מלפפון שמיר</div>
+                        <div class="menu-item">24. סלט תפו"א</div>
+                        <div class="menu-item">25. פלפל חריף שלם</div>
+                    </div>
+                    
+                    <div class="menu-column">
+                        <h3>סלטים עשירים</h3>
+                        <div class="menu-item">סלט 1 לבחירה:</div>
+                        <div class="menu-item">1. סלט כרוב</div>
+                        <div class="menu-item">2. סלט חסה</div>
+                        <div class="menu-item">3. סלט קינואה</div>
+                        <div class="menu-item">4. סלט עגבניה מלפפון</div>
+                        <div class="menu-item">5. סלט עגבניה מלפפון</div>
+                        
+                        <h3>מנה ראשונה</h3>
+                        <div class="menu-item">דג 1 לבחירה:</div>
+                        <div class="menu-item">1. סלומון שקדים</div>
+                        <div class="menu-item">2. ניסיוני סלומון</div>
+                        <div class="menu-item">3. מושט מרוקאי</div>
+                        <div class="menu-item">4. מושט בעשבי תיבול</div>
+                        <div class="menu-item">5. קציצות דג</div>
+                        <div class="menu-item">תוספת תשלום ₪5 למנה:</div>
+                        <div class="menu-item">6. סלומון ברוטב טריאקי</div>
+                        <div class="menu-item">7. סלומון בעשבי תיבול</div>
+                        <div class="menu-item">8. סלומון בלימון</div>
+                        
+                        <h3>תוספות תשלום-מרקים</h3>
+                        <div class="menu-item">1. מרק כתום</div>
+                        <div class="menu-item">2. מרק תימני</div>
+                    </div>
+                    
+                    <div class="menu-column">
+                        <h3>תוספות חמות</h3>
+                        <div class="menu-item">3 תוספות לבחירה:</div>
+                        <div class="menu-item">1. אורז לבן</div>
+                        <div class="menu-item">2. אורז שקדים וצימוקים</div>
+                        <div class="menu-item">3. אושפלו</div>
+                        <div class="menu-item">4. ירקות בתנור</div>
+                        <div class="menu-item">5. פירה</div>
+                        <div class="menu-item">6. קוסקוס</div>
+                        <div class="menu-item">7. סירים</div>
+                        <div class="menu-item">8. שעועית</div>
+                        <div class="menu-item">9. זיתים</div>
+                        
+                        <h3>מנה שניה</h3>
+                        <div class="menu-item">עיקרית 1 לבחירה:</div>
+                        <div class="menu-item">1. שיפודי עוף בתנור</div>
+                        <div class="menu-item">2. כרעיים</div>
+                        <div class="menu-item">3. קציצות ברוטב</div>
+                        <div class="menu-item">4. כבד</div>
+                        <div class="menu-item">5. חזה עוף</div>
+                        <div class="menu-item">6. שניצלים</div>
+                        <div class="menu-item">7. חלולה</div>
+                        
+                        <h3>תוספת תשלום</h3>
+                        <div class="menu-item">8. אסאדו ₪10</div>
+                    </div>
+                </div>
+                
+                <div class="menu-packages">
+                    <h3>חבילות מוכנות</h3>
+                    <div class="packages-container">
+                        <div class="package">
+                            <div class="package-content">6 סלטים • 1 סלט עשיר • 1 דג • 3 תוספות חמות</div>
+                            <div class="package-price">₪55 למנה</div>
+                        </div>
+                        <div class="package">
+                            <div class="package-content">6 סלטים • 1 סלט עשיר • 1 דג • 3 תוספות חמות • 1 מנה עיקרית</div>
+                            <div class="package-price">₪85 למנה</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="events" id="events">
+        <div class="container">
+            <h2>סוגי אירועים</h2>
+            <p>אנו מספקים שירותי קייטרינג מקצועיים לכל סוגי האירועים:</p>
+            
+            <div class="events-grid">
+                <div class="event-type">
+                    <h3>אירועים משפחתיים</h3>
+                    <p>חגיגות יום הולדת, ארוחות משפחתיות, אירועי סוף שבוע</p>
+                </div>
+                <div class="event-type">
+                    <h3>אירועי שמחה</h3>
+                    <p>בר/בת מצווה, בריתות, שבע ברכות</p>
+                </div>
+                <div class="event-type">
+                    <h3>אירועים עסקיים</h3>
+                    <p>ישיבות, השקות, אירועי חברה</p>
+                </div>
+                <div class="event-type">
+                    <h3>על האש מקצועי</h3>
+                    <p>מנגל מקצועי לכל אירוע, כולל ציוד והגשה</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta" id="cta">
+        <div class="container">
+            <h2>מחכה לשמוע איתכם!</h2>
+            <p>צרו קשר עוד היום להזמנה ולהתאמה אישית של האירוע שלכם</p>
+            <a href="tel:0533918487" class="cta-button">התקשרו עכשיו - 0533918487</a>
+        </div>
+    </section>
+    
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>יצירת קשר</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3>טלפון</h3>
+                    <p><a href="tel:0533918487" class="contact-link">0533918487</a></p>
+                </div>
+                <div class="contact-card">
+                    <h3>אימייל</h3>
+                    <p><a href="mailto:Israelt1770@gmail.com" class="contact-link">Israelt1770@gmail.com</a></p>
+                </div>
+                <div class="contact-card">
+                    <h3>כשרות</h3>
+                    <p>בד"ץ ירושלים והרב לנדא</p>
+                    <p>שחיטת ליובאוויטש</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 ישראל טירנואר - Food | כל הזכויות שמורות</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add this script to make animations work
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to check if element is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.bottom >= 0
+                );
+            }
+            
+            // Function to add visible class to elements in viewport
+            function handleScroll() {
+                const sections = document.querySelectorAll('section');
+                sections.forEach(section => {
+                    if (isInViewport(section)) {
+                        section.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScroll);
+            
+            // Trigger once on page load
+            handleScroll();
+        });
+    </script>
