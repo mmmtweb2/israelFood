@@ -591,12 +591,12 @@
             <p>מוצרים בכשרות בד"ץ ירושלים והרב לנדא, בשרים בכשרות שחיטת ליובאוויטש!</p>
         </div>
     </section>
-    
-   <div class="section-divider"></div>
+
+    <div class="section-divider"></div>
     
     <section class="menu-section" id="menu">
         <div class="container">
-            <h2 class="section-title">התפריט שלנו</h2>
+            <h2 class="section-title menu-heading">התפריט שלנו</h2>
             
             <div class="menu-container">
                 <div class="menu-grid">
@@ -640,7 +640,7 @@
                         <div class="category-wrapper">
                             <div class="category-header">
                                 <h3 class="category-title">סלטים עשירים</h3>
-                                <div class="category-subtitle">2 סלטים לבחירה</div>
+                                <div class="category-subtitle">סלט 2 לבחירה</div>
                             </div>
                             <ul class="menu-items">
                                 <li class="menu-item"><span class="item-dot"></span>סלט כרוב</li>
@@ -700,7 +700,7 @@
                                 <div class="category-subtitle">דג 1 לבחירה</div>
                             </div>
                             <ul class="menu-items">
-                                <li class="menu-item"><span class="item-dot"></span>סלמון שקדים</li>
+                                <li class="menu-item"><span class="item-dot"></span>סלומון שקדים</li>
                                 <li class="menu-item"><span class="item-dot"></span>נגיסי סלומון</li>
                                 <li class="menu-item"><span class="item-dot"></span>מושט מרוקאי</li>
                                 <li class="menu-item"><span class="item-dot"></span>מושט בעשבי תיבול</li>
@@ -833,6 +833,9 @@
         padding-bottom: 15px;
         left: 50%;
         transform: translateX(-50%);
+        width: auto;
+        max-width: 90%;
+        white-space: nowrap;
     }
     
     .section-title::after {
@@ -1123,6 +1126,20 @@
         .menu-grid {
             grid-template-columns: 1fr;
             gap: 30px;
+        }
+        
+        .section-title, .menu-heading {
+            font-size: 2.5rem;
+            margin-right: auto;
+            margin-left: auto;
+            width: auto;
+            max-width: 100%;
+            position: static;
+            transform: none;
+            left: auto;
+            text-align: center;
+            display: block;
+            white-space: normal;
         }
         
         .category-title {
