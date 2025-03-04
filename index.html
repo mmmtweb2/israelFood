@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food - ישראל טירנואר | אוכל ביתי • אירועים • על האש</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Amatic+SC:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Amatic+SC:wght@700&family=Alef:wght@400;700&display=swap');
         
         * {
             margin: 0;
@@ -15,11 +15,12 @@
         }
         
         body {
-            font-family: 'Heebo', sans-serif;
+            font-family: 'Alef', 'Heebo', sans-serif;
             background-color: #1e2222;
             color: #f5f5f5;
             line-height: 1.6;
             overflow-x: hidden;
+            max-width: 100%;
         }
         
         .container {
@@ -45,8 +46,7 @@
             background-size: cover;
             background-position: center;
             position: relative;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('backpic.png');
-        }
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('backpic.png');        }
         
         .overlay {
             position: absolute;
@@ -88,12 +88,6 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         
-        /* פלפל אדום סמל */
-        .pepper-icon {
-            width: 80px;
-            margin: 15px auto;
-            animation: fadeIn 2.5s ease;
-        }
         
         section {
             padding: 60px 0;
@@ -518,14 +512,14 @@
             z-index: 100;
         }
         
-        /* Responsive Design */
+        /* קוד גולש בסלולרי - תיקון נגישות */
         @media (max-width: 768px) {
             .logo {
-                font-size: 4rem;
+                font-size: 3.5rem;
             }
             
             .tagline {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
             }
             
             .menu-grid {
@@ -542,11 +536,36 @@
             }
             
             h2 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             section {
-                padding: 60px 0;
+                padding: 40px 0;
+            }
+            
+            .menu-column {
+                overflow-x: hidden;
+                width: 100%;
+            }
+            
+            .menu-item {
+                font-size: 0.95rem;
+                word-wrap: break-word;
+            }
+            
+            .contact-card {
+                width: 100%;
+                padding: 20px 15px;
+            }
+            
+            body {
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
+            
+            .container {
+                width: 100%;
+                padding: 0 15px;
             }
         }
     </style>
@@ -558,13 +577,6 @@
                 <h1 class="logo">Food</h1>
                 <p class="tagline">אוכל ביתי • אירועים • על האש</p>
                 <p class="kosher-badge">הכל בכשרות בד"ץ ירושלים והרב לנדא</p>
-                <div class="pepper-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#e74c3c">
-                        <path d="M50,15c0,0-20,10-25,30S20,95,50,85s30-30,25-40S50,15,50,15z"/>
-                        <path d="M50,15c0,0,20,10,25,30S80,95,50,85s-30-30-25-40S50,15,50,15z"/>
-                        <path d="M50,5c0,0-5,5-5,10s5,5,5,5s5,0,5-5S50,5,50,5z" fill="#2ecc71"/>
-                    </svg>
-                </div>
             </div>
         </div>
     </header>
@@ -572,9 +584,9 @@
     <section class="about" id="about">
         <div class="container">
             <h2>שלום לכם</h2>
-            <p>אני ישראל טירנואר ואני כאן כדי להפיק לכם אירוע מושלם, מאלף ועד תו!! מתמחה בהפקת אירועים, קייטרינג, על האש ואוכל מוכן ביתי לכל סוגי האירועים: ערבי משפחה, שבע ברכות, בריתות, בר מצוות, ועוד.</p>
+            <p>אני ישראל טירנואר ואני כאן כדי להפיק לכם אירוע מושלם, מא' ועד ת'!! מתמחה בהפקת אירועים, קייטרינג, על האש ואוכל מוכן ביתי לכל סוגי האירועים: ערבי משפחה, שבע ברכות, בריתות, בר מצוות, ועוד.</p>
             <p>אוכל טרי, איכותי ושירות מכל הלב – שיהפוך את האירוע שלכם לחוויה בלתי נשכחת.</p>
-            <p>מוצרים בכשרות בד"ץ ירושלים והרב לנדא, בשרים בכשרת שחיטת ליובאוויטש!</p>
+            <p>מוצרים בכשרות בד"ץ ירושלים והרב לנדא, בשרים בכשרות שחיטת ליובאוויטש!</p>
         </div>
     </section>
     
@@ -621,12 +633,12 @@
                         <div class="menu-item">2. סלט חסה</div>
                         <div class="menu-item">3. סלט קינואה</div>
                         <div class="menu-item">4. סלט עגבניה מלפפון</div>
-                        <div class="menu-item">5. סלט עגבניה מלפפון</div>
-                        
+                        <div class="menu-item">3. סלט קפרזה</div>
+
                         <h3>מנה ראשונה</h3>
                         <div class="menu-item">דג 1 לבחירה:</div>
                         <div class="menu-item">1. סלומון שקדים</div>
-                        <div class="menu-item">2. ניסיוני סלומון</div>
+                        <div class="menu-item">2. נגיסי סלומון</div>
                         <div class="menu-item">3. מושט מרוקאי</div>
                         <div class="menu-item">4. מושט בעשבי תיבול</div>
                         <div class="menu-item">5. קציצות דג</div>
@@ -649,9 +661,10 @@
                         <div class="menu-item">4. ירקות בתנור</div>
                         <div class="menu-item">5. פירה</div>
                         <div class="menu-item">6. קוסקוס</div>
-                        <div class="menu-item">7. סירים</div>
-                        <div class="menu-item">8. שעועית</div>
-                        <div class="menu-item">9. זיתים</div>
+                        <div class="menu-item">7. שעועית</div>
+                        <div class="menu-item">8. זיתים</div>
+                        <div class="menu-item">9. סיגרים</div>
+
                         
                         <h3>מנה שניה</h3>
                         <div class="menu-item">עיקרית 1 לבחירה:</div>
@@ -661,7 +674,7 @@
                         <div class="menu-item">4. כבד</div>
                         <div class="menu-item">5. חזה עוף</div>
                         <div class="menu-item">6. שניצלים</div>
-                        <div class="menu-item">7. חלולה</div>
+                        <div class="menu-item">7. רולדה</div>
                         
                         <h3>תוספת תשלום</h3>
                         <div class="menu-item">8. אסאדו ₪10</div>
@@ -672,11 +685,11 @@
                     <h3>חבילות מוכנות</h3>
                     <div class="packages-container">
                         <div class="package">
-                            <div class="package-content">6 סלטים • 1 סלט עשיר • 1 דג • 3 תוספות חמות</div>
+                            <div class="package-content">6 סלטים • 1 סלט עשיר • 1 מנת דג • 3 תוספות חמות</div>
                             <div class="package-price">₪55 למנה</div>
                         </div>
                         <div class="package">
-                            <div class="package-content">6 סלטים • 1 סלט עשיר • 1 דג • 3 תוספות חמות • 1 מנה עיקרית</div>
+                            <div class="package-content">6 סלטים • 1 סלט עשיר •  1 מנת דג • 3 תוספות חמות • 1 מנה עיקרית</div>
                             <div class="package-price">₪85 למנה</div>
                         </div>
                     </div>
@@ -713,7 +726,7 @@
     
     <section class="cta" id="cta">
         <div class="container">
-            <h2>מחכה לשמוע איתכם!</h2>
+            <h2>מחכה לשמוע אתכם!</h2>
             <p>צרו קשר עוד היום להזמנה ולהתאמה אישית של האירוע שלכם</p>
             <a href="tel:0533918487" class="cta-button">התקשרו עכשיו - 0533918487</a>
         </div>
@@ -724,13 +737,14 @@
             <h2>יצירת קשר</h2>
             <div class="contact-info">
                 <div class="contact-card">
-                    <h3>טלפון</h3>
-                    <p><a href="tel:0533918487" class="contact-link">0533918487</a></p>
+                    <h3>צור קשר בוואטסאפ</h3>
+                    <p><a href="https://wa.me/972533918487" class="contact-link">0533918487</a></p>
                 </div>
                 <div class="contact-card">
                     <h3>אימייל</h3>
                     <p><a href="mailto:Israelt1770@gmail.com" class="contact-link">Israelt1770@gmail.com</a></p>
                 </div>
+
                 <div class="contact-card">
                     <h3>כשרות</h3>
                     <p>בד"ץ ירושלים והרב לנדא</p>
@@ -742,7 +756,7 @@
     
     <footer>
         <div class="container">
-            <p>© 2025 ישראל טירנואר - Food | כל הזכויות שמורות</p>
+            <p>© 2025 מענדי טירנואר | כל הזכויות שמורות</p>
         </div>
     </footer>
 
