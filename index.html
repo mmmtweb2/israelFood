@@ -5,42 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food - ישראל טירנואר | אוכל ביתי • אירועים • על האש</title>
 
-     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // A simple function to check if we should count this visit
-            function shouldCountVisit() {
-                // Try to get the last visit timestamp from localStorage
-                const lastVisit = localStorage.getItem('lastVisit');
-                const now = new Date().getTime();
-                
-                // If no previous visit or last visit was more than 30 minutes ago
-                if (!lastVisit || (now - lastVisit > 30 * 60 * 1000)) {
-                    localStorage.setItem('lastVisit', now);
-                    return true;
-                }
-                return false;
-            }
-            
-            // Count visit if needed
-            if (shouldCountVisit()) {
-                // This is where you'd normally send the data to your server
-                // For simplicity, we're just using localStorage to count visits
-                const visits = parseInt(localStorage.getItem('visitCount') || '0') + 1;
-                localStorage.setItem('visitCount', visits);
-                console.log(`Visit counted! Total: ${visits}`);
-                
-                // You could also send an analytics event
-                if (typeof gtag === 'function') {
-                    gtag('event', 'page_view', {
-                        'event_category': 'engagement',
-                        'event_label': 'home_page'
-                    });
-                }
-            }
-        });
-    </script>
-
-    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Amatic+SC:wght@700&family=Alef:wght@400;700&display=swap');
         
@@ -619,6 +583,7 @@
             align-items: center;
         }
     </style>
+    <script src="https://cdn.counter.dev/script.js" data-id="dac02d71-0491-4061-a268-925763c46153" data-utcoffset="2"></script>
 </head>
 <body>
     <header>
