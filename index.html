@@ -1243,7 +1243,74 @@
             gap: 20px;
         }
     }
+
+    /* ========== עיצוב גלריית תמונות ========== */
+    .gallery {
+        background-color: #1e2222;
+        padding: 60px 0;
+    }
     
+    .gallery-subtitle {
+        text-align: center;
+        font-size: 1.3rem;
+        margin-top: -30px;
+        margin-bottom: 50px;
+        color: #ccc;
+    }
+    
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+    
+    .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    
+    .gallery-item:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    }
+    
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+    }
+    
+    .gallery-item:hover img {
+        transform: scale(1.1);
+    }
+    
+    .gallery-item-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+        color: white;
+        padding: 40px 20px 20px;
+        transform: translateY(100%);
+        transition: transform 0.4s ease;
+    }
+    
+    .gallery-item:hover .gallery-item-overlay {
+        transform: translateY(0);
+    }
+    
+    .gallery-item-overlay p {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+        
     /* הוספת אנימציות בגלילה */
     .menu-column, .package, .pricing-column, .soups-section, .production-item {
         opacity: 0;
@@ -1317,7 +1384,7 @@
             <a href="tel:0533918487" class="cta-button">התקשרו עכשיו - 0533918487</a>
         </div>
     </section>
-
+<!-- 
      <section class="recipes-showcase" id="recipes">
     <div class="container">
         <h2>המתכונים שלנו</h2>
@@ -1339,8 +1406,52 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
+    <section class="gallery" id="gallery">
+    <div class="container">
+        <h2>גלריית טעמים</h2>
+        <p class="gallery-subtitle">מבט קרוב לאירועים, למנות ולאווירה</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300.png?text=Your+Image+1" alt="תמונה מאירוע 1">
+                <div class="gallery-item-overlay">
+                    <p>תיאור קצר של התמונה</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300.png?text=Your+Image+2" alt="תמונה מאירוע 2">
+                <div class="gallery-item-overlay">
+                    <p>מנה עיקרית מפנקת</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300.png?text=Your+Image+3" alt="תמונה מאירוע 3">
+                <div class="gallery-item-overlay">
+                    <p>עיצוב שולחן</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300.png?text=Your+Image+4" alt="תמונה מאירוע 4">
+                <div class="gallery-item-overlay">
+                    <p>קינוחים צבעוניים</p>
+                </div>
+            </div>
+             <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300.png?text=Your+Image+5" alt="תמונה מאירוע 5">
+                <div class="gallery-item-overlay">
+                    <p>על האש</p>
+                </div>
+            </div>
+             <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x300.png?text=Your+Image+6" alt="תמונה מאירוע 6">
+                <div class="gallery-item-overlay">
+                    <p>מבחר סלטים</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     
     <section class="contact" id="contact">
         <div class="container">
