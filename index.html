@@ -114,7 +114,7 @@
         .carousel-prev:hover, .carousel-next:hover { background: rgba(0,0,0,0.7); }
         .carousel-prev { left: 15px; }
         .carousel-next { right: 15px; }
-        .carousel-indicators { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; }
+        .carousel-indicators { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 5; }
         .indicator { width: 12px; height: 12px; border-radius: 50%; background-color: rgba(255,255,255,0.5); border: 1px solid rgba(0,0,0,0.2); cursor: pointer; transition: background-color 0.3s ease; }
         .indicator.active { background-color: var(--primary-color); }
 
@@ -164,7 +164,7 @@
             body { font-size: 16px; }
             .logo { font-size: 3.5rem; }
             .tagline { font-size: 1.2rem; }
-            h2 { font-size: 2.5rem; /* תיקון כותרות גולשות */ }
+            h2 { font-size: 2.5rem; /* תיקון הכותרות שגלשו */ }
             section { padding: 40px 0; }
             .contact-card { width: 100%; }
         }
@@ -445,13 +445,17 @@
             let currentIndex = 0;
             let autoPlayInterval;
 
-            // Arrange slides next to one another
-            const setSlidePosition = (slide, index) => {
-                slide.style.left = slideWidth * index + 'px';
+            const moveToSlide = (targetIndex) => {
+                track.style.transform = 'translateX(-' + slideWidth * targetIndex + 'px)';
+                currentIndex = targetIndex;
             };
-            slides.forEach(setSlidePosition);
 
-            // Create indicators
+            const updateIndicators = (targetIndex) => {
+                const currentIndicator = indicatorsNav.querySelector('.active');
+                if (currentIndicator) currentIndicator.classList.remove('active');
+                indicatorsNav.children[targetIndex].classList.add('active');
+            };
+            
             slides.forEach((_, index) => {
                 const button = document.createElement('button');
                 button.classList.add('indicator');
@@ -460,21 +464,8 @@
             });
             const indicators = Array.from(indicatorsNav.children);
 
-            const moveToSlide = (targetIndex) => {
-                const currentSlide = slides[currentIndex];
-                const targetSlide = slides[targetIndex];
-                track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
-                currentIndex = targetIndex;
-            };
-
-            const updateIndicators = (targetIndex) => {
-                const currentIndicator = indicatorsNav.querySelector('.active');
-                const targetIndicator = indicators[targetIndex];
-                currentIndicator.classList.remove('active');
-                targetIndicator.classList.add('active');
-            };
-            
             const startAutoPlay = () => {
+                stopAutoPlay(); // asekästi
                 autoPlayInterval = setInterval(() => {
                     const nextIndex = (currentIndex + 1) % slides.length;
                     moveToSlide(nextIndex);
@@ -486,7 +477,6 @@
                 clearInterval(autoPlayInterval);
             };
 
-            // Event Listeners
             prevButton.addEventListener('click', () => {
                 const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
                 moveToSlide(prevIndex);
