@@ -16,12 +16,7 @@
             --text-muted: #ccc;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
         body {
             font-family: 'Alef', 'Heebo', sans-serif;
@@ -32,20 +27,9 @@
             overflow-x: hidden;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
-        header {
-            color: white;
-            text-align: center;
-            position: relative;
-            height: 90vh;
-            min-height: 500px;
-            max-height: 650px;
-        }
+        header { color: white; text-align: center; position: relative; height: 90vh; min-height: 500px; max-height: 650px; }
         
         .header-image {
             width: 100%; height: 100%;
@@ -62,29 +46,14 @@
             animation: fadeIn 1.5s ease;
         }
         
-        .logo {
-            font-family: 'Amatic SC', cursive;
-            font-size: 6rem; margin-bottom: 10px;
-            letter-spacing: 5px; text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
-        }
-        
+        .logo { font-family: 'Amatic SC', cursive; font-size: 6rem; margin-bottom: 10px; letter-spacing: 5px; text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5); }
         .tagline { font-size: 1.8rem; margin-bottom: 20px; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); }
-        .kosher-badge {
-            background-color: rgba(255, 255, 255, 0.9); color: #333;
-            padding: 8px 20px; border-radius: 50px;
-            font-size: 1rem; margin-top: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+        .kosher-badge { background-color: rgba(255, 255, 255, 0.9); color: #333; padding: 8px 20px; border-radius: 50px; font-size: 1rem; margin-top: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
         
-        section {
-            padding: 50px 0;
-            position: relative;
-            overflow: hidden;
-        }
+        section { padding: 50px 0; position: relative; overflow: hidden; }
 
         section:not(:first-child):not(.cta)::before {
-            content: '';
-            position: absolute; width: 100%; height: 40px;
+            content: ''; position: absolute; width: 100%; height: 40px;
             top: -20px; left: 0;
             background-color: inherit;
             border-radius: 50% 50% 0 0 / 100% 100% 0 0;
@@ -101,54 +70,27 @@
         
         h2::after {
             content: ''; position: absolute;
-            bottom: 0; left: 25%; right: 25%;
-            height: 3px;
+            bottom: 0; left: 25%; right: 25%; height: 3px;
             background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
         }
 
-        .section-subtitle {
-            text-align: center; font-size: 1.3rem;
-            margin-top: -30px; margin-bottom: 50px;
-            color: var(--text-muted);
-        }
-        
+        .section-subtitle { text-align: center; font-size: 1.3rem; margin-top: -30px; margin-bottom: 50px; color: var(--text-muted); }
         .about { background-color: var(--background-dark2); text-align: center; }
         .about p { max-width: 800px; margin: 0 auto 30px; font-size: 1.2rem; }
         .section-divider { height: 60px; background: linear-gradient(to bottom right, var(--background-dark2) 50%, var(--background-dark1) 50%); margin: 0; padding: 0; }
         
         .menu-section { background-color: var(--background-dark1); }
         .menu-container { max-width: 900px; margin: 0 auto; }
-        .accordion-item {
-            background: var(--background-dark2); border-radius: 10px;
-            margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease;
-        }
-
-        .accordion-header {
-            padding: 20px 25px; cursor: pointer;
-            display: flex; justify-content: space-between; align-items: center;
-            border-radius: 10px; transition: background-color 0.3s ease;
-        }
+        .accordion-item { background: var(--background-dark2); border-radius: 10px; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease; }
+        .accordion-header { padding: 20px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-radius: 10px; transition: background-color 0.3s ease; }
         .accordion-header:hover { background-color: rgba(255,255,255,0.05); }
         .accordion-title-wrap { display: flex; flex-direction: column; align-items: flex-start; }
         .accordion-header .category-title { font-size: 2rem; font-family: 'Amatic SC', cursive; margin: 0; }
         .accordion-header .category-subtitle { font-size: 1rem; color: var(--text-muted); margin: 0; }
-        .accordion-icon::before {
-            content: '+'; font-size: 2rem; font-weight: 300;
-            color: var(--primary-color);
-            transition: transform 0.4s ease; display: inline-block;
-        }
+        .accordion-icon::before { content: '+'; font-size: 2rem; font-weight: 300; color: var(--primary-color); transition: transform 0.4s ease; display: inline-block; }
         .accordion-item.active .accordion-icon::before { transform: rotate(45deg); }
-        .accordion-content {
-            max-height: 0; overflow: hidden;
-            transition: max-height 0.6s ease-out, padding 0.6s ease-out;
-            padding: 0 25px;
-        }
-        .accordion-content-inner {
-            padding: 25px 0; border-top: 1px solid rgba(255,255,255,0.1);
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.6s ease-out, padding 0.6s ease-out; padding: 0 25px; }
+        .accordion-content-inner { padding: 25px 0; border-top: 1px solid rgba(255,255,255,0.1); display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
         .menu-items, .price-items-list, .drink-items { list-style: none; padding: 0; }
         .menu-items li, .price-items-list li, .drink-items li { margin-bottom: 10px; }
         .price-item { display: flex; justify-content: space-between; flex-wrap: wrap; }
@@ -156,80 +98,29 @@
         
         /* גלריית קרוסלה חדשה */
         .gallery { background-color: var(--background-dark2); }
-        .gallery-carousel {
-            position: relative;
-            max-width: 800px;
-            margin: auto;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
+        .gallery-carousel { position: relative; max-width: 800px; margin: auto; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); overflow: hidden; }
         .carousel-track-container { overflow: hidden; }
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        .carousel-slide {
-            min-width: 100%;
-            position: relative;
-        }
-        .carousel-slide img {
-            width: 100%;
-            display: block;
-            aspect-ratio: 16/10;
-            object-fit: cover;
-        }
+        .carousel-track { display: flex; transition: transform 0.7s ease-in-out; }
+        .carousel-slide { min-width: 100%; position: relative; }
+        .carousel-slide img { width: 100%; display: block; aspect-ratio: 16/10; object-fit: cover; }
         .carousel-prev, .carousel-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.4);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            z-index: 10;
-            font-size: 1.8rem;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(0,0,0,0.4); color: white; border: none; padding: 10px;
+            cursor: pointer; z-index: 10; font-size: 1.8rem;
+            border-radius: 50%; width: 50px; height: 50px;
+            display: flex; align-items: center; justify-content: center;
             transition: background-color 0.3s ease;
         }
-        .carousel-prev:hover, .carousel-next:hover {
-            background: rgba(0,0,0,0.7);
-        }
+        .carousel-prev:hover, .carousel-next:hover { background: rgba(0,0,0,0.7); }
         .carousel-prev { left: 15px; }
         .carousel-next { right: 15px; }
-
-        .carousel-indicators {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-        }
-        .indicator {
-            width: 12px; height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255,255,255,0.5);
-            border: 1px solid rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .indicator.active {
-            background-color: var(--primary-color);
-        }
+        .carousel-indicators { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; }
+        .indicator { width: 12px; height: 12px; border-radius: 50%; background-color: rgba(255,255,255,0.5); border: 1px solid rgba(0,0,0,0.2); cursor: pointer; transition: background-color 0.3s ease; }
+        .indicator.active { background-color: var(--primary-color); }
 
         .events { background-color: var(--background-dark1); }
         .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px; }
-        .event-type {
-            background: var(--background-dark2); padding: 40px 30px;
-            border-radius: 15px; text-align: center;
-        }
+        .event-type { background: var(--background-dark2); padding: 40px 30px; border-radius: 15px; text-align: center; }
         .event-type h3 { font-family: 'Amatic SC', cursive; font-size: 2.2rem; color: var(--primary-color); margin-bottom: 15px; }
         .cta { background: linear-gradient(135deg, var(--background-dark2), var(--background-dark1)); color: white; text-align: center; }
         
@@ -240,11 +131,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 8px 20px rgba(231,76,60,0.2);
         }
-        .cta-button:hover {
-            background-color: #c0392b;
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 25px rgba(231,76,60,0.3);
-        }
+        .cta-button:hover { background-color: #c0392b; transform: translateY(-5px) scale(1.05); box-shadow: 0 12px 25px rgba(231,76,60,0.3); }
 
         .contact { background-color: var(--background-dark1); }
         .contact-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 50px; }
@@ -256,11 +143,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transition: all 0.3s ease-out;
         }
-        .contact-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            border-color: rgba(231,76,60,0.3);
-        }
+        .contact-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.3); border-color: rgba(231,76,60,0.3); }
         .contact-card h3 { font-family: 'Amatic SC', cursive; font-size: 1.8rem; color: var(--primary-color); margin-bottom: 20px;}
         .contact-link { color: var(--text-light); text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
         .contact-link:hover { color: var(--primary-color); }
@@ -281,7 +164,7 @@
             body { font-size: 16px; }
             .logo { font-size: 3.5rem; }
             .tagline { font-size: 1.2rem; }
-            h2 { font-size: 2.5rem; /* תיקון כותרות גולשות במובייל */ }
+            h2 { font-size: 2.5rem; /* תיקון כותרות גולשות */ }
             section { padding: 40px 0; }
             .contact-card { width: 100%; }
         }
@@ -471,8 +354,8 @@
                         <div class="carousel-slide"><img src="./pics/13.jpeg" alt="תמונה מאירוע 13"></div>
                     </div>
                 </div>
-                <button class="carousel-prev">&#10094;</button>
-                <button class="carousel-next">&#10095;</button>
+                <button class="carousel-prev" aria-label="Previous slide">&#10094;</button>
+                <button class="carousel-next" aria-label="Next slide">&#10095;</button>
                 <div class="carousel-indicators"></div>
             </div>
         </div>
@@ -527,6 +410,7 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // --- Accordion Menu Logic ---
         const accordionItems = document.querySelectorAll('.accordion-item');
         accordionItems.forEach(item => {
             const header = item.querySelector('.accordion-header');
@@ -549,81 +433,84 @@
             });
         });
 
-        const track = document.querySelector('.carousel-track');
-        const slides = Array.from(track.children);
-        const nextButton = document.querySelector('.carousel-next');
-        const prevButton = document.querySelector('.carousel-prev');
-        const indicatorsNav = document.querySelector('.carousel-indicators');
-        
-        if (track) {
+        // --- Carousel Logic ---
+        const carousel = document.querySelector('.gallery-carousel');
+        if (carousel) {
+            const track = carousel.querySelector('.carousel-track');
+            const slides = Array.from(track.children);
+            const nextButton = carousel.querySelector('.carousel-next');
+            const prevButton = carousel.querySelector('.carousel-prev');
+            const indicatorsNav = carousel.querySelector('.carousel-indicators');
             const slideWidth = slides[0].getBoundingClientRect().width;
-            
+            let currentIndex = 0;
+            let autoPlayInterval;
+
+            // Arrange slides next to one another
             const setSlidePosition = (slide, index) => {
                 slide.style.left = slideWidth * index + 'px';
             };
             slides.forEach(setSlidePosition);
 
-            const indicators = Array.from(indicatorsNav.children);
-
-            let currentIndex = 0;
-
-            const moveToSlide = (currentSlide, targetSlide) => {
-                track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
-                currentSlide.classList.remove('active');
-                targetSlide.classList.add('active');
-            }
-
-            const updateIndicators = (currentIndicator, targetIndicator) => {
-                currentIndicator.classList.remove('active');
-                targetIndicator.classList.add('active');
-            }
-
+            // Create indicators
             slides.forEach((_, index) => {
                 const button = document.createElement('button');
                 button.classList.add('indicator');
+                if (index === 0) button.classList.add('active');
                 indicatorsNav.appendChild(button);
             });
-            indicatorsNav.children[0].classList.add('active');
+            const indicators = Array.from(indicatorsNav.children);
 
-            nextButton.addEventListener('click', e => {
-                const currentSlide = track.querySelector('.active') || slides[0];
-                const nextIndex = (slides.indexOf(currentSlide) + 1) % slides.length;
-                const nextSlide = slides[nextIndex];
+            const moveToSlide = (targetIndex) => {
+                const currentSlide = slides[currentIndex];
+                const targetSlide = slides[targetIndex];
+                track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+                currentIndex = targetIndex;
+            };
+
+            const updateIndicators = (targetIndex) => {
                 const currentIndicator = indicatorsNav.querySelector('.active');
-                const nextIndicator = indicatorsNav.children[nextIndex];
+                const targetIndicator = indicators[targetIndex];
+                currentIndicator.classList.remove('active');
+                targetIndicator.classList.add('active');
+            };
+            
+            const startAutoPlay = () => {
+                autoPlayInterval = setInterval(() => {
+                    const nextIndex = (currentIndex + 1) % slides.length;
+                    moveToSlide(nextIndex);
+                    updateIndicators(nextIndex);
+                }, 4000); // כל 4 שניות
+            };
 
-                moveToSlide(currentSlide, nextSlide);
-                updateIndicators(currentIndicator, nextIndicator);
+            const stopAutoPlay = () => {
+                clearInterval(autoPlayInterval);
+            };
+
+            // Event Listeners
+            prevButton.addEventListener('click', () => {
+                const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+                moveToSlide(prevIndex);
+                updateIndicators(prevIndex);
             });
 
-            prevButton.addEventListener('click', e => {
-                const currentSlide = track.querySelector('.active') || slides[0];
-                let prevIndex = slides.indexOf(currentSlide) - 1;
-                if (prevIndex < 0) {
-                    prevIndex = slides.length - 1;
-                }
-                const prevSlide = slides[prevIndex];
-                const currentIndicator = indicatorsNav.querySelector('.active');
-                const prevIndicator = indicatorsNav.children[prevIndex];
-                
-                moveToSlide(currentSlide, prevSlide);
-                updateIndicators(currentIndicator, prevIndicator);
+            nextButton.addEventListener('click', () => {
+                const nextIndex = (currentIndex + 1) % slides.length;
+                moveToSlide(nextIndex);
+                updateIndicators(nextIndex);
             });
 
             indicatorsNav.addEventListener('click', e => {
-                const targetIndicator = e.target.closest('button');
+                const targetIndicator = e.target.closest('button.indicator');
                 if (!targetIndicator) return;
+                const targetIndex = indicators.findIndex(dot => dot === targetIndicator);
+                moveToSlide(targetIndex);
+                updateIndicators(targetIndex);
+            });
 
-                const currentSlide = track.querySelector('.active') || slides[0];
-                const currentIndicator = indicatorsNav.querySelector('.active');
-                const targetIndex = Array.from(indicatorsNav.children).indexOf(targetIndicator);
-                const targetSlide = slides[targetIndex];
+            carousel.addEventListener('mouseenter', stopAutoPlay);
+            carousel.addEventListener('mouseleave', startAutoPlay);
 
-                moveToSlide(currentSlide, targetSlide);
-                updateIndicators(currentIndicator, targetIndicator);
-            })
-
-            slides[0].classList.add('active');
+            startAutoPlay();
         }
     });
     </script>
