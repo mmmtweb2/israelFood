@@ -96,7 +96,6 @@
         .price-item { display: flex; justify-content: space-between; flex-wrap: wrap; }
         .price { color: var(--primary-color); font-weight: bold; margin-right: auto; padding-right: 10px; }
         
-        /* גלריית קרוסלה חדשה */
         .gallery { background-color: var(--background-dark2); }
         .gallery-carousel { position: relative; max-width: 800px; margin: auto; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); overflow: hidden; }
         .carousel-track-container { overflow: hidden; }
@@ -164,7 +163,13 @@
             body { font-size: 16px; }
             .logo { font-size: 3.5rem; }
             .tagline { font-size: 1.2rem; }
-            h2 { font-size: 2.5rem; /* תיקון הכותרות שגלשו */ }
+            h2 { 
+                font-size: 2.8rem; 
+                display: block;    
+                left: auto;
+                transform: none;
+                text-align: center;
+            }
             section { padding: 40px 0; }
             .contact-card { width: 100%; }
         }
@@ -339,19 +344,19 @@
             <div class="gallery-carousel">
                 <div class="carousel-track-container">
                     <div class="carousel-track">
-                        <div class="carousel-slide"><img src="./pics/1.jpeg" alt="תמונה מאירוע 1"></div>
-                        <div class="carousel-slide"><img src="./pics/2.jpeg" alt="תמונה מאירוע 2"></div>
-                        <div class="carousel-slide"><img src="./pics/3.jpeg" alt="תמונה מאירוע 3"></div>
-                        <div class="carousel-slide"><img src="./pics/4.jpeg" alt="תמונה מאירוע 4"></div>
-                        <div class="carousel-slide"><img src="./pics/5.jpeg" alt="תמונה מאירוע 5"></div>
-                        <div class="carousel-slide"><img src="./pics/6.jpeg" alt="תמונה מאירוע 6"></div>
-                        <div class="carousel-slide"><img src="./pics/7.jpeg" alt="תמונה מאירוע 7"></div>
-                        <div class="carousel-slide"><img src="./pics/8.jpeg" alt="תמונה מאירוע 8"></div>
-                        <div class="carousel-slide"><img src="./pics/9.jpeg" alt="תמונה מאירוע 9"></div>
-                        <div class="carousel-slide"><img src="./pics/10.jpeg" alt="תמונה מאירוע 10"></div>
-                        <div class="carousel-slide"><img src="./pics/11.jpeg" alt="תמונה מאירוע 11"></div>
-                        <div class="carousel-slide"><img src="./pics/12.jpeg" alt="תמונה מאירוע 12"></div>
-                        <div class="carousel-slide"><img src="./pics/13.jpeg" alt="תמונה מאירוע 13"></div>
+                        <div class="carousel-slide"><img src="pics/1.jpeg" alt="תמונה מאירוע 1"></div>
+                        <div class="carousel-slide"><img src="pics/2.jpeg" alt="תמונה מאירוע 2"></div>
+                        <div class="carousel-slide"><img src="pics/3.jpeg" alt="תמונה מאירוע 3"></div>
+                        <div class="carousel-slide"><img src="pics/4.jpeg" alt="תמונה מאירוע 4"></div>
+                        <div class="carousel-slide"><img src="pics/5.jpeg" alt="תמונה מאירוע 5"></div>
+                        <div class="carousel-slide"><img src="pics/6.jpeg" alt="תמונה מאירוע 6"></div>
+                        <div class="carousel-slide"><img src="pics/7.jpeg" alt="תמונה מאירוע 7"></div>
+                        <div class="carousel-slide"><img src="pics/8.jpeg" alt="תמונה מאירוע 8"></div>
+                        <div class="carousel-slide"><img src="pics/9.jpeg" alt="תמונה מאירוע 9"></div>
+                        <div class="carousel-slide"><img src="pics/10.jpeg" alt="תמונה מאירוע 10"></div>
+                        <div class="carousel-slide"><img src="pics/11.jpeg" alt="תמונה מאירוע 11"></div>
+                        <div class="carousel-slide"><img src="pics/12.jpeg" alt="תמונה מאירוע 12"></div>
+                        <div class="carousel-slide"><img src="pics/13.jpeg" alt="תמונה מאירוע 13"></div>
                     </div>
                 </div>
                 <button class="carousel-prev" aria-label="Previous slide">&#10094;</button>
@@ -409,7 +414,7 @@
     </footer>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    window.onload = function() {
         // --- Accordion Menu Logic ---
         const accordionItems = document.querySelectorAll('.accordion-item');
         accordionItems.forEach(item => {
@@ -445,6 +450,11 @@
             let currentIndex = 0;
             let autoPlayInterval;
 
+            if (slideWidth === 0) {
+                console.error("Carousel slide width is 0. Check CSS or image loading.");
+                return;
+            }
+
             const moveToSlide = (targetIndex) => {
                 track.style.transform = 'translateX(-' + slideWidth * targetIndex + 'px)';
                 currentIndex = targetIndex;
@@ -453,7 +463,9 @@
             const updateIndicators = (targetIndex) => {
                 const currentIndicator = indicatorsNav.querySelector('.active');
                 if (currentIndicator) currentIndicator.classList.remove('active');
-                indicatorsNav.children[targetIndex].classList.add('active');
+                if (indicatorsNav.children[targetIndex]) {
+                    indicatorsNav.children[targetIndex].classList.add('active');
+                }
             };
             
             slides.forEach((_, index) => {
@@ -465,12 +477,12 @@
             const indicators = Array.from(indicatorsNav.children);
 
             const startAutoPlay = () => {
-                stopAutoPlay(); // asekästi
+                stopAutoPlay();
                 autoPlayInterval = setInterval(() => {
                     const nextIndex = (currentIndex + 1) % slides.length;
                     moveToSlide(nextIndex);
                     updateIndicators(nextIndex);
-                }, 4000); // כל 4 שניות
+                }, 4000);
             };
 
             const stopAutoPlay = () => {
@@ -502,7 +514,7 @@
 
             startAutoPlay();
         }
-    });
+    };
     </script>
 </body>
 </html>
