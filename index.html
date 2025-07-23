@@ -23,11 +23,13 @@
             scroll-behavior: smooth;
         }
         
+        /* 2. הגדלת הטקסט הכללי */
         body {
             font-family: 'Alef', 'Heebo', sans-serif;
             background-color: var(--background-dark1);
             color: var(--text-light);
-            line-height: 1.6;
+            line-height: 1.7; /* שופר ריווח שורות */
+            font-size: 17px; /* הוגדל גודל הגופן הבסיסי */
             overflow-x: hidden;
         }
         
@@ -47,59 +49,44 @@
         }
         
         .header-image {
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
+            width: 100%; height: 100%;
+            background-size: cover; background-position: center;
             position: relative;
             background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('backpic.jpg');
         }
         
         .overlay {
-            position: absolute;
-            top: 0; left: 0;
+            position: absolute; top: 0; left: 0;
             width: 100%; height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
             animation: fadeIn 1.5s ease;
         }
         
         .logo {
             font-family: 'Amatic SC', cursive;
-            font-size: 6rem;
-            margin-bottom: 10px;
-            letter-spacing: 5px;
-            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+            font-size: 6rem; margin-bottom: 10px;
+            letter-spacing: 5px; text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
         }
         
-        .tagline {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
-        }
-        
+        .tagline { font-size: 1.8rem; margin-bottom: 20px; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); }
         .kosher-badge {
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #333;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 1rem;
-            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.9); color: #333;
+            padding: 8px 20px; border-radius: 50px;
+            font-size: 1rem; margin-top: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         
+        /* 1. הקטנת רווחים בין קטעים */
         section {
-            padding: 60px 0; /* צמצום המרווח */
+            padding: 50px 0; /* הקטנת הרווח האנכי */
             position: relative;
             overflow: hidden;
         }
 
         section:not(:first-child):not(.cta)::before {
             content: '';
-            position: absolute;
-            width: 100%; height: 40px;
+            position: absolute; width: 100%; height: 40px;
             top: -20px; left: 0;
             background-color: inherit;
             border-radius: 50% 50% 0 0 / 100% 100% 0 0;
@@ -107,47 +94,36 @@
         }
         
         h2 {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 3.5rem;
-            font-family: 'Amatic SC', cursive;
-            color: white;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
+            text-align: center; margin-bottom: 50px;
+            font-size: 3.5rem; font-family: 'Amatic SC', cursive;
+            color: white; position: relative;
+            display: inline-block; padding-bottom: 15px;
+            left: 50%; transform: translateX(-50%);
         }
         
         h2::after {
-            content: '';
-            position: absolute;
+            content: ''; position: absolute;
             bottom: 0; left: 25%; right: 25%;
             height: 3px;
             background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
         }
 
         .section-subtitle {
-            text-align: center;
-            font-size: 1.3rem;
-            margin-top: -30px;
-            margin-bottom: 50px;
+            text-align: center; font-size: 1.3rem;
+            margin-top: -30px; margin-bottom: 50px;
             color: var(--text-muted);
         }
         
         .about { background-color: var(--background-dark2); text-align: center; }
         .about p { max-width: 800px; margin: 0 auto 30px; font-size: 1.2rem; }
         .section-divider { height: 60px; background: linear-gradient(to bottom right, var(--background-dark2) 50%, var(--background-dark1) 50%); margin: 0; padding: 0; }
+        
         .menu-section { background-color: var(--background-dark1); }
         .menu-container { max-width: 900px; margin: 0 auto; }
-        
         .accordion-item {
-            background: var(--background-dark2);
-            border-radius: 10px;
-            margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.3s ease;
+            background: var(--background-dark2); border-radius: 10px;
+            margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease;
         }
 
         .accordion-header {
@@ -155,87 +131,59 @@
             display: flex; justify-content: space-between; align-items: center;
             border-radius: 10px; transition: background-color 0.3s ease;
         }
-
         .accordion-header:hover { background-color: rgba(255,255,255,0.05); }
         .accordion-title-wrap { display: flex; flex-direction: column; align-items: flex-start; }
         .accordion-header .category-title { font-size: 2rem; font-family: 'Amatic SC', cursive; margin: 0; }
         .accordion-header .category-subtitle { font-size: 1rem; color: var(--text-muted); margin: 0; }
-        
         .accordion-icon::before {
             content: '+'; font-size: 2rem; font-weight: 300;
             color: var(--primary-color);
             transition: transform 0.4s ease; display: inline-block;
         }
-
         .accordion-item.active .accordion-icon::before { transform: rotate(45deg); }
         .accordion-content {
-            max-height: 0;
-            overflow: hidden;
+            max-height: 0; overflow: hidden;
             transition: max-height 0.6s ease-out, padding 0.6s ease-out;
             padding: 0 25px;
         }
-        
         .accordion-content-inner {
-            padding: 25px 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            padding: 25px 0; border-top: 1px solid rgba(255,255,255,0.1);
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
         }
-
         .menu-items, .price-items-list, .drink-items { list-style: none; padding: 0; }
         .menu-items li, .price-items-list li, .drink-items li { margin-bottom: 10px; }
         .price-item { display: flex; justify-content: space-between; flex-wrap: wrap; }
         .price { color: var(--primary-color); font-weight: bold; margin-right: auto; padding-right: 10px; }
-
+        
+        /* 3. גלריית תמונות חדשה (רשת) */
         .gallery { background-color: var(--background-dark2); }
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-300px * 13)); }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
-        .gallery-carousel {
-            height: 250px; margin: auto;
-            position: relative; width: 100%;
-            display: grid; place-items: center;
+        .gallery-item {
+            position: relative;
             overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            aspect-ratio: 4 / 3;
         }
-        .gallery-carousel::before, .gallery-carousel::after {
-            content: ''; position: absolute;
-            width: 10%; height: 100%; z-index: 3;
-        }
-        .gallery-carousel::before { left: 0; top: 0; background: linear-gradient(to left, rgba(0,0,0,0) 0%, var(--background-dark2) 100%); }
-        .gallery-carousel::after { right: 0; top: 0; background: linear-gradient(to right, rgba(0,0,0,0) 0%, var(--background-dark2) 100%); }
-        .gallery-track { display: flex; width: calc(300px * 26); animation: scroll 70s linear infinite; }
-        .gallery-carousel:hover .gallery-track { animation-play-state: paused; }
-        
-        .gallery-slide {
-            height: 220px; width: 300px;
-            padding: 15px;
-            transition: transform 0.3s ease;
-        }
-        
-        .gallery-slide img {
+        .gallery-item img {
             width: 100%; height: 100%;
             object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.4s ease, filter 0.4s ease;
             cursor: pointer;
         }
-
-        @media (pointer: fine) { /* This targets devices with a mouse */
-            .gallery-slide:hover {
-                transform: scale(1.5);
-                z-index: 5;
-            }
-            .gallery-slide:hover img {
-                box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-            }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(1.1);
         }
-        
+
         .lightbox {
-            display: none; position: fixed;
-            z-index: 1000; top: 0; left: 0;
-            width: 100%; height: 100%;
+            display: none; position: fixed; z-index: 1000;
+            top: 0; left: 0; width: 100%; height: 100%;
             background-color: rgba(0,0,0,0.85);
             justify-content: center; align-items: center;
             animation: fadeIn 0.3s ease;
@@ -243,25 +191,51 @@
         .lightbox.show { display: flex; }
         .lightbox-content { max-width: 90%; max-height: 85%; position: relative; }
         .lightbox-content img { width: auto; height: auto; max-width: 100%; max-height: 100%; border-radius: 5px; }
-        .lightbox-close { position: absolute; top: -40px; right: 0; color: white; font-size: 3rem; cursor: pointer; line-height: 1; }
+        .lightbox-close {
+            position: absolute; top: -40px; right: 0;
+            color: white; font-size: 3rem;
+            cursor: pointer; line-height: 1;
+        }
         
         .events { background-color: var(--background-dark1); }
         .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px; }
-        .event-type { background: var(--background-dark2); padding: 40px 30px; border-radius: 15px; text-align: center; }
+        .event-type {
+            background: var(--background-dark2); padding: 40px 30px;
+            border-radius: 15px; text-align: center;
+        }
         .event-type h3 { font-family: 'Amatic SC', cursive; font-size: 2.2rem; color: var(--primary-color); margin-bottom: 15px; }
-        
         .cta { background: linear-gradient(135deg, var(--background-dark2), var(--background-dark1)); color: white; text-align: center; }
+        
+        /* 4. עיצוב משופר לכפתור + אפקט */
         .cta-button {
             display: inline-block; background-color: var(--primary-color);
             color: white; padding: 18px 40px; border-radius: 50px;
             font-size: 1.2rem; font-weight: bold; text-decoration: none;
             transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(231,76,60,0.2);
         }
-        .cta-button:hover { background-color: #c0392b; transform: translateY(-3px); }
+        .cta-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(231,76,60,0.3);
+        }
 
         .contact { background-color: var(--background-dark1); }
-        .contact-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 50px; }
-        .contact-card { background: var(--background-dark2); padding: 40px 30px; border-radius: 15px; width: 300px; text-align: center; }
+        .contact-info { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 50px; }
+        
+        /* 4. עיצוב משופר לכרטיסי יצירת קשר + אפקט */
+        .contact-card {
+            background: var(--background-dark2); padding: 40px 30px;
+            border-radius: 15px; width: 300px; text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease-out;
+        }
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            border-color: rgba(231,76,60,0.3);
+        }
         .contact-card h3 { font-family: 'Amatic SC', cursive; font-size: 1.8rem; color: var(--primary-color); margin-bottom: 20px;}
         .contact-link { color: var(--text-light); text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
         .contact-link:hover { color: var(--primary-color); }
@@ -279,10 +253,11 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
         @media (max-width: 768px) {
+            body { font-size: 16px; }
             .logo { font-size: 3.5rem; }
             .tagline { font-size: 1.2rem; }
             h2 { font-size: 2.5rem; }
-            section { padding: 50px 0; }
+            section { padding: 40px 0; }
             .contact-card { width: 100%; }
         }
     </style>
@@ -453,36 +428,20 @@
         <div class="container">
             <h2>גלריית טעמים</h2>
             <p class="section-subtitle">מבט קרוב לאירועים, למנות ולאווירה</p>
-        </div>
-        <div class="gallery-carousel">
-            <div class="gallery-track">
-                <div class="gallery-slide"><img src="./pics/1.jpeg" alt="תמונה מאירוע 1"></div>
-                <div class="gallery-slide"><img src="./pics/2.jpeg" alt="תמונה מאירוע 2"></div>
-                <div class="gallery-slide"><img src="./pics/3.jpeg" alt="תמונה מאירוע 3"></div>
-                <div class="gallery-slide"><img src="./pics/4.jpeg" alt="תמונה מאירוע 4"></div>
-                <div class="gallery-slide"><img src="./pics/5.jpeg" alt="תמונה מאירוע 5"></div>
-                <div class="gallery-slide"><img src="./pics/6.jpeg" alt="תמונה מאירוע 6"></div>
-                <div class="gallery-slide"><img src="./pics/7.jpeg" alt="תמונה מאירוע 7"></div>
-                <div class="gallery-slide"><img src="./pics/8.jpeg" alt="תמונה מאירוע 8"></div>
-                <div class="gallery-slide"><img src="./pics/9.jpeg" alt="תמונה מאירוע 9"></div>
-                <div class="gallery-slide"><img src="./pics/10.jpeg" alt="תמונה מאירוע 10"></div>
-                <div class="gallery-slide"><img src="./pics/11.jpeg" alt="תמונה מאירוע 11"></div>
-                <div class="gallery-slide"><img src="./pics/12.jpeg" alt="תמונה מאירוע 12"></div>
-                <div class="gallery-slide"><img src="./pics/13.jpeg" alt="תמונה מאירוע 13"></div>
-                
-                <div class="gallery-slide"><img src="./pics/1.jpeg" alt="תמונה מאירוע 1"></div>
-                <div class="gallery-slide"><img src="./pics/2.jpeg" alt="תמונה מאירוע 2"></div>
-                <div class="gallery-slide"><img src="./pics/3.jpeg" alt="תמונה מאירוע 3"></div>
-                <div class="gallery-slide"><img src="./pics/4.jpeg" alt="תמונה מאירוע 4"></div>
-                <div class="gallery-slide"><img src="./pics/5.jpeg" alt="תמונה מאירוע 5"></div>
-                <div class="gallery-slide"><img src="./pics/6.jpeg" alt="תמונה מאירוע 6"></div>
-                <div class="gallery-slide"><img src="./pics/7.jpeg" alt="תמונה מאירוע 7"></div>
-                <div class="gallery-slide"><img src="./pics/8.jpeg" alt="תמונה מאירוע 8"></div>
-                <div class="gallery-slide"><img src="./pics/9.jpeg" alt="תמונה מאירוע 9"></div>
-                <div class="gallery-slide"><img src="./pics/10.jpeg" alt="תמונה מאירוע 10"></div>
-                <div class="gallery-slide"><img src="./pics/11.jpeg" alt="תמונה מאירוע 11"></div>
-                <div class="gallery-slide"><img src="./pics/12.jpeg" alt="תמונה מאירוע 12"></div>
-                <div class="gallery-slide"><img src="./pics/13.jpeg" alt="תמונה מאירוע 13"></div>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="./pics/1.jpeg" alt="תמונה מאירוע 1"></div>
+                <div class="gallery-item"><img src="./pics/2.jpeg" alt="תמונה מאירוע 2"></div>
+                <div class="gallery-item"><img src="./pics/3.jpeg" alt="תמונה מאירוע 3"></div>
+                <div class="gallery-item"><img src="./pics/4.jpeg" alt="תמונה מאירוע 4"></div>
+                <div class="gallery-item"><img src="./pics/5.jpeg" alt="תמונה מאירוע 5"></div>
+                <div class="gallery-item"><img src="./pics/6.jpeg" alt="תמונה מאירוע 6"></div>
+                <div class="gallery-item"><img src="./pics/7.jpeg" alt="תמונה מאירוע 7"></div>
+                <div class="gallery-item"><img src="./pics/8.jpeg" alt="תמונה מאירוע 8"></div>
+                <div class="gallery-item"><img src="./pics/9.jpeg" alt="תמונה מאירוע 9"></div>
+                <div class="gallery-item"><img src="./pics/10.jpeg" alt="תמונה מאירוע 10"></div>
+                <div class="gallery-item"><img src="./pics/11.jpeg" alt="תמונה מאירוע 11"></div>
+                <div class="gallery-item"><img src="./pics/12.jpeg" alt="תמונה מאירוע 12"></div>
+                <div class="gallery-item"><img src="./pics/13.jpeg" alt="תמונה מאירוע 13"></div>
             </div>
         </div>
     </section>
@@ -496,7 +455,7 @@
 
     <section class="cta" id="cta">
         <div class="container">
-            <h2>מחכה לשמוע אתכם!</h2>
+            <h2>מחכה לשמוע מכם!</h2>
             <p>צרו קשר עוד היום להזמנה ולהתאמה אישית של האירוע שלכם</p>
             <a href="tel:0533918487" class="cta-button">התקשרו עכשיו - 0533918487</a>
         </div>
@@ -543,24 +502,18 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // --- Accordion Menu Logic ---
         const accordionItems = document.querySelectorAll('.accordion-item');
         accordionItems.forEach(item => {
             const header = item.querySelector('.accordion-header');
             header.addEventListener('click', () => {
                 const content = item.querySelector('.accordion-content');
-                
                 const isActive = item.classList.contains('active');
-
-                // Close all other items
                 accordionItems.forEach(otherItem => {
                     if (otherItem !== item && otherItem.classList.contains('active')) {
                         otherItem.classList.remove('active');
                         otherItem.querySelector('.accordion-content').style.maxHeight = null;
                     }
                 });
-
-                // Toggle current item
                 if (!isActive) {
                     item.classList.add('active');
                     content.style.maxHeight = content.scrollHeight + "px";
@@ -571,30 +524,25 @@
             });
         });
 
-        // --- Lightbox Logic for Mobile Only ---
         const isMobile = window.matchMedia("(max-width: 768px)").matches;
-        
         if (isMobile) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             const lightboxClose = document.getElementById('lightbox-close');
-            const galleryImages = document.querySelectorAll('.gallery-slide img');
+            const galleryImages = document.querySelectorAll('.gallery-item img');
 
             galleryImages.forEach(image => {
                 image.addEventListener('click', (e) => {
-                    e.preventDefault(); // Prevents hover effects on touch
+                    e.preventDefault();
                     lightbox.classList.add('show');
                     lightboxImg.src = image.src;
                 });
             });
 
             const closeLightbox = () => lightbox.classList.remove('show');
-
             lightboxClose.addEventListener('click', closeLightbox);
             lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) {
-                    closeLightbox();
-                }
+                if (e.target === lightbox) { closeLightbox(); }
             });
         }
     });
